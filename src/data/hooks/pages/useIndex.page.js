@@ -1,29 +1,29 @@
-import { useState, useMemo } from "react";
-import { useApi } from '../useApi'
-import { ApiService } from "../../services/ApiService";
+import { useMemo, useState } from "react";
 import { mutate } from "swr";
+import { ApiService } from "../../services/ApiService";
+import { useApi } from "../useApi";
 
 export function useIndex() {
   const maxLength = 125;
-  const [text, setText] = useState('');
-  const tweetList = useApi('tweets').data;
-  const sortedTweetList = useMemo(() => {
-    return (tweetList || []).sort((a,b) => 
+  const [text, setText] = useState("");
+  const BentiList = useApi("Bentis").data;
+  const sortedBentiList = useMemo(() => {
+    return (BentiList || []).sort((a, b) =>
       a.data.date < b.data.date ? 1 : -1
     );
-  }, [tweetList]);
+  }, [BentiList]);
 
   const user = {
-    name: 'Wesley Gado',
-    username: '@wesleygado',
-    picture: 'https://github.com/wesleygado.png'
-  }
+    name: "Breno Santana",
+    username: "@brenoasantana",
+    picture: "https://github.com/brenoasantana.png",
+  };
 
-  const tweet = {
+  const Benti = {
     date: new Date(),
     text: text,
     user,
-  }
+  };
 
   function onTextChange(event) {
     const text = event.target.value;
@@ -32,25 +32,25 @@ export function useIndex() {
     }
   }
 
-  async function sendTweet() {
-    await ApiService.post('tweets', {
+  async function sendBenti() {
+    await ApiService.post("bentis", {
       data: {
         date: new Date().toISOString(),
         text: text,
         user,
-      }
+      },
     });
-    setText('');
-    mutate('tweets');
+    setText("");
+    mutate("bentis");
   }
 
-  console.log(sortedTweetList)
+  console.log(sortedBentiList);
 
   return {
     text,
     onTextChange,
     maxLength,
-    sendTweet,
-    sortedTweetList,
-  }
+    sendBenti,
+    sortedBentiList,
+  };
 }
