@@ -2,8 +2,6 @@
 
 Bentivee é um projeto desenvolvido como parte de um curso de **Fundamentos de React** no LinkedIn Learning. Ele é um clone simplificado do Twitter — mas com um toque brasileiro: aqui os tweets se chamam **Bentis** 🐤✨
 
-O projeto inclui um frontend moderno com React + Vite e um backend simples com **Node.js** para gerenciar os dados dos Bentis.
-
 ## 🚀 Tecnologias utilizadas
 
 ### Frontend
