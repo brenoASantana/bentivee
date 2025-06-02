@@ -1,8 +1,4 @@
 import { useMemo, useState } from "react";
-import { mutate } from "swr";
-import { ApiService } from "../../services/ApiService";
-import { useApi } from "../useApi";
-import sorted from "../../../pages/Index";
 
 export function useIndex() {
   const maxLength = 125;
@@ -29,7 +25,7 @@ export function useIndex() {
   async function sendBentis() {
     setSendBentiList([...sendBentiList, Benti]);
   }
- console.log(Benti.data)
+
   return {
     text,
     onTextChange,

@@ -11,17 +11,13 @@ export default function Index() {
   const { text, onTextChange, maxLength, sendBentis, sendBentiList } =
     useIndex();
 
-  console.log("sendBentiList ->", sendBentiList);
-
   const sorted = useMemo(() => {
-    return sendBentiList.sort((a, b) => (a.data.date < b.data.date ? 1 : -1));
+    return sendBentiList.sort((a, b) => (a.date < b.date ? 1 : -1));
   }, [sendBentiList]);
-
- console.log("sorted ->", sorted);
 
   return (
     <div>
-      <h1 className={styles.pageTitle}>Bentivee</h1>
+      <h1 className={styles.pageTitle}>🐦Bentivee</h1>
       <div className={styles.BentiContainer}>
         <img
           src={"https://github.com/brenoasantana.png"}
@@ -49,8 +45,7 @@ export default function Index() {
       </div>
 
       <ul className={styles.BentiList}>
-        {sorted.map((benti,index) => {
-
+        {sorted.map((benti, index) => {
           return (
             <li key={index} className={styles.BentiListItem}>
               <Benti benti={benti} />

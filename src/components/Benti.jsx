@@ -2,14 +2,11 @@ import { formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale/pt-BR";
 import styles from "./Benti.module.css";
 
-export default function Benti({benti}) {
-  console.log("data ->", benti);
-  //TODO: Descobrir pq o benti.date ta vindo vazio
-
-  // const publishedToNew = formatDistanceToNow(new Date(benti.date), {
-  //   locale: ptBR,
-  //   addSuffix: true,
-  // });
+export default function Benti({ benti }) {
+  const publishedToNew = formatDistanceToNow(new Date(benti.date), {
+    locale: ptBR,
+    addSuffix: true,
+  });
 
   return (
     <div className={styles.BentiContainer}>
@@ -17,9 +14,9 @@ export default function Benti({benti}) {
       <div className={styles.user}>
         <span className={styles.userName}>{benti.user.name}</span>
         <span className={styles.userUserName}>{benti.user.username}</span>
-        {/* <span className={styles.date}>- {benti.date}</span> */}
+        <span className={styles.date}>- {publishedToNew}</span>
       </div>
       <div className={styles.BentiText}>{benti.text}</div>
     </div>
-  )
+  );
 }

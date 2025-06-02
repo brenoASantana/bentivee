@@ -1,4 +1,4 @@
-# 🐦 Bentivee - Clone do Twitter com ReactJS + Vite + Node.js
+# 🐦 Bentivee - Clone do Twitter com ReactJS + Vite
 
 Bentivee é um projeto desenvolvido como parte de um curso de **Fundamentos de React** no LinkedIn Learning. Ele é um clone simplificado do Twitter — mas com um toque brasileiro: aqui os tweets se chamam **Bentis** 🐤✨
 
@@ -11,9 +11,6 @@ O projeto inclui um frontend moderno com React + Vite e um backend simples com *
 - Vite
 - JavaScript
 - CSS Modules
-
-### Backend
-- Node.js
 
 ## 📸 Preview
 
