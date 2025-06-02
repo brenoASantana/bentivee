@@ -33,5 +33,3 @@ Se quiser sugerir melhorias ou reportar bugs, fique à vontade para abrir uma *i
 ---
 
 Feito com 💙 por [Breno Santana](https://github.com/brenoasantana)
-
-```
