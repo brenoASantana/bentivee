@@ -1,11 +1,23 @@
-//index.jsx como estáva
+//React
+import { useMemo } from "react";
+
+//Owned
+import Benti from "../components/Benti";
 import TextInput from "../components/TextInput";
 import { useIndex } from "../data/hooks/pages/useIndex.page";
 import styles from "./Index.module.css";
 
 export default function Index() {
-  const { text, onTextChange, maxLength, sendBenti, sortedBentiList } =
+  const { text, onTextChange, maxLength, sendBentis, sendBentiList } =
     useIndex();
+
+  console.log("sendBentiList ->", sendBentiList);
+
+  const sorted = useMemo(() => {
+    return sendBentiList.sort((a, b) => (a.data.date < b.data.date ? 1 : -1));
+  }, [sendBentiList]);
+
+ console.log("sorted ->", sorted);
 
   return (
     <div>
@@ -28,7 +40,7 @@ export default function Index() {
           {text.length} / {maxLength}
         </div>
         <button
-          onClick={sendBenti}
+          onClick={sendBentis}
           className={styles.postButton}
           disabled={text.length === 0}
         >
@@ -37,10 +49,11 @@ export default function Index() {
       </div>
 
       <ul className={styles.BentiList}>
-        {sortedBentiList.map((Benti) => {
+        {sorted.map((benti,index) => {
+
           return (
-            <li key={Benti.id} className={styles.BentiListItem}>
-              <Benti Benti={Benti.data} />
+            <li key={index} className={styles.BentiListItem}>
+              <Benti benti={benti} />
             </li>
           );
         })}

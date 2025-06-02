@@ -2,27 +2,21 @@ import { useMemo, useState } from "react";
 import { mutate } from "swr";
 import { ApiService } from "../../services/ApiService";
 import { useApi } from "../useApi";
+import sorted from "../../../pages/Index";
 
 export function useIndex() {
   const maxLength = 125;
   const [text, setText] = useState("");
-  const BentiList = useApi("Bentis").data;
-  const sortedBentiList = useMemo(() => {
-    return (BentiList || []).sort((a, b) =>
-      a.data.date < b.data.date ? 1 : -1
-    );
-  }, [BentiList]);
-
-  const user = {
-    name: "Breno Santana",
-    username: "@brenoasantana",
-    picture: "https://github.com/brenoasantana.png",
-  };
+  const [sendBentiList, setSendBentiList] = useState([]);
 
   const Benti = {
     date: new Date(),
     text: text,
-    user,
+    user: {
+      name: "Breno Santana",
+      username: "@brenoasantana",
+      picture: "https://github.com/brenoasantana.png",
+    },
   };
 
   function onTextChange(event) {
@@ -32,25 +26,15 @@ export function useIndex() {
     }
   }
 
-  async function sendBenti() {
-    await ApiService.post("bentis", {
-      data: {
-        date: new Date().toISOString(),
-        text: text,
-        user,
-      },
-    });
-    setText("");
-    mutate("bentis");
+  async function sendBentis() {
+    setSendBentiList([...sendBentiList, Benti]);
   }
-
-  console.log(sortedBentiList);
-
+ console.log(Benti.data)
   return {
     text,
     onTextChange,
     maxLength,
-    sendBenti,
-    sortedBentiList,
+    sendBentis,
+    sendBentiList,
   };
 }
