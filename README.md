@@ -17,7 +17,7 @@ O projeto inclui um frontend moderno com React + Vite e um backend simples com *
 
 ## 📸 Preview
 
-![Preview do Bentivee](./preview.png) <!-- (adicione uma imagem do projeto rodando, se possível) -->
+![Preview do Bentivee](./preview.png)
 
 ## 🔧 Funcionalidades
 
@@ -25,6 +25,7 @@ O projeto inclui um frontend moderno com React + Vite e um backend simples com *
 - Listar os Bentes em tempo real
 - Integração com backend Node.js
 - Interface responsiva e moderna
+- Limitador de 125 caracteres por Benti
 
 ## 🤝 Contribuição
 
